@@ -19,6 +19,8 @@
 # ##############################################################################
 
 from datetime import datetime
+from os import mkdir
+from os.path import isdir
 
 from tensorflow import Variable, argmax, cast, equal, float32, matmul, reduce_mean, reshape
 from tensorflow.compat.v1 import Session, placeholder, global_variables_initializer
@@ -107,6 +109,9 @@ def train(height = CAPTCHA_HEIGHT, width = CAPTCHA_WIDTH, y_size = len(CAPTCHA_L
             acc = sess.run(accuracy, feed_dict = {x: batch_x_test, y: batch_y_test, keep_prob: 1.0})
             print(datetime.now().strftime('%c'), ' step:', step, ' accuracy:', acc)
             if acc > acc_rate:
+                if not isdir('./model'):
+                    mkdir('./model')
+                
                 model_path = "./model/captcha.model"
                 saver.save(sess, model_path, global_step = step)
                 acc_rate += 0.005
