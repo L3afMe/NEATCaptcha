@@ -23,7 +23,7 @@ from os import mkdir
 from os.path import isdir
 
 from tensorflow import Variable, argmax, cast, equal, float32, matmul, reduce_mean, reshape
-from tensorflow.compat.v1 import Session, placeholder, global_variables_initializer
+from tensorflow.compat.v1 import Session, global_variables_initializer, placeholder
 from tensorflow.compat.v1.train import AdamOptimizer, Saver
 from tensorflow.nn import conv2d as _conv2d, dropout, max_pool2d as _max_pool2d, relu, sigmoid_cross_entropy_with_logits
 from tensorflow.random import normal
@@ -112,8 +112,9 @@ def train(height = CAPTCHA_HEIGHT, width = CAPTCHA_WIDTH, y_size = len(CAPTCHA_L
                 if not isdir('./model'):
                     mkdir('./model')
                 
-                model_path = "./model/captcha.model"
-                saver.save(sess, model_path, global_step = step)
+                print('Saving to model/captcha.model')
+                saver.save(sess, './model/captcha.model', global_step = step)
+                print('Saved to model/captcha.model')
                 acc_rate += 0.005
                 if acc_rate >= 1:
                     break

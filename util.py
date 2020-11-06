@@ -18,9 +18,6 @@
 #                                                                              #
 # ##############################################################################
 
-from os import mkdir
-from os.path import isdir
-
 import numpy as np
 
 from gen import CAPTCHA_HEIGHT, CAPTCHA_LEN, CAPTCHA_LIST, CAPTCHA_WIDTH, gen_captcha_text_and_image

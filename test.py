@@ -53,5 +53,5 @@ if __name__ == '__main__':
     image = convert2gray(image)
     image = image.flatten() / 255
     pre_text = captcha2text([image])
-    print("Text:", text, ', Actual Text:', pre_text, ', Result:', pre_text[0] == text)
+    print('Text:', text, ', Actual Text:', pre_text, ', Result:', pre_text[0] == text)
     img.show()
