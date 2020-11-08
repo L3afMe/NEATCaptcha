@@ -1,0 +1,3 @@
+model_checkpoint_path: "captcha.model-74600"
+all_model_checkpoint_paths: "captcha.model-59100"
+all_model_checkpoint_paths: "captcha.model-74600"
